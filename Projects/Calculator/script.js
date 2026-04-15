@@ -53,6 +53,10 @@ inputBtns.forEach((inputBtn)=>{
   {
     inputBtn.addEventListener("click",()=>useOperator(inputBtn.value));
   }
+  else if(inputBtn.classList.contains("decimal"))
+  {
+    inputBtn.addEventListener("click",addDecimal)
+  }
 });
 function resetAll()
 {
@@ -62,3 +66,14 @@ function resetAll()
   calculatorDisplay.textContent = "0";
 }
 clearBtn.addEventListener("click",resetAll);
+function addDecimal()
+{
+  if(awaitingNextValue)
+  {
+    return;
+  }
+  if(!calculatorDisplay.textContent.includes("."))
+  {
+    calculatorDisplay.textContent = `${calculatorDisplay.textContent}.`;
+  }
+}
